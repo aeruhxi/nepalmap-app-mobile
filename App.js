@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { DrawerNavigator, StackNavigator, DrawerItems } from 'react-navigation';
-import Demographics from './screens/Demographics';
+import Demographics from './screens/demographics';
 import Education from './screens/Education';
 
 const CustomDrawerComponent = props => (
