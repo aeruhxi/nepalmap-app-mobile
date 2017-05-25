@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Svg, { Path, G, Text as SvgText } from 'react-native-svg';
 
 const colors = ['rgba(224, 0, 21, 0.8)', 'rgba(0, 173, 239, 0.8)'];
-const padding = 35;
+const padding = 20;
 
 /**
  * Legend Component represents the legend for pie chart

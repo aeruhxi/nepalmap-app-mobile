@@ -4,9 +4,10 @@ import {
   StatusBar,
   ScrollView,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  Text
 } from 'react-native';
-import { Text, Card } from 'react-native-elements';
+import { Card } from 'react-native-elements';
 import PieChart from './PieChart';
 
 const peopleData = [
@@ -29,14 +30,16 @@ export default class Demographics extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text h4>Population</Text>
+        <Text style={styles.title}>Population</Text>
         <Card
           containerStyle={{
             width: Dimensions.get('screen').width - 20,
             margin: 0
           }}
         >
-          <Text>Sex</Text>
+          <Text style={styles.mainValue}>26,123,231</Text>
+          <Text style={styles.mainLabel}>People</Text>
+          <Text style={styles.pieChartTitle}>Sex</Text>
           <PieChart pieHeight={270} pieWidth={270} data={peopleData} />
         </Card>
       </View>
@@ -45,10 +48,25 @@ export default class Demographics extends Component {
 }
 
 const styles = StyleSheet.create({
+  title: {
+    color: 'rgba(0, 0, 0, 0.7)',
+    fontSize: 16
+  },
   container: {
     flex: 1,
     paddingTop: 10,
     paddingLeft: 10,
     paddingRight: 10
+  },
+  mainValue: {
+    fontSize: 32,
+    fontWeight: 'bold'
+  },
+  mainLabel: {
+    fontSize: 20
+  },
+  pieChartTitle: {
+    textAlign: 'center',
+    fontWeight: 'bold'
   }
 });
