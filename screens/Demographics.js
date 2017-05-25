@@ -7,13 +7,33 @@ import {
   Dimensions,
   Text
 } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card, Divider } from 'react-native-elements';
 import PieChart from './PieChart';
 
 const peopleData = [
   { label: 'Female', value: 51.5 },
   { label: 'Male', value: 48.5 }
 ];
+const peopleDataIn2031 = [
+  { label: 'Female', value: 51.4 },
+  { label: 'Male', value: 48.6 }
+];
+
+const PieChartCard = ({ mainValue, mainLabel, pieChartTitle }) => {
+  return (
+    <Card
+      containerStyle={{
+        width: Dimensions.get('screen').width - 20,
+        margin: 0
+      }}
+    >
+      <Text style={styles.mainValue}>{mainValue}</Text>
+      <Text style={styles.mainLabel}>{mainLabel}</Text>
+      <Text style={styles.pieChartTitle}>{pieChartTitle}</Text>
+      <PieChart pieHeight={270} pieWidth={270} data={peopleData} />
+    </Card>
+  );
+};
 
 export default class Demographics extends Component {
   static navigationOptions = {
@@ -29,27 +49,26 @@ export default class Demographics extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Text style={styles.title}>Population</Text>
-        <Card
-          containerStyle={{
-            width: Dimensions.get('screen').width - 20,
-            margin: 0
-          }}
-        >
-          <Text style={styles.mainValue}>26,123,231</Text>
-          <Text style={styles.mainLabel}>People</Text>
-          <Text style={styles.pieChartTitle}>Sex</Text>
-          <PieChart pieHeight={270} pieWidth={270} data={peopleData} />
-        </Card>
-      </View>
+        <PieChartCard
+          mainLabel="People"
+          mainValue={'25,123,231'}
+          pieChartTitle={'Sex'}
+        />
+        <PieChartCard
+          mainLabel="Projected in 2031"
+          mainValue={'33,597,033'}
+          pieChartTitle={'Projected by sex in 2031'}
+        />
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   title: {
-    color: 'rgba(0, 0, 0, 0.7)',
+    color: 'rgba(0, 0, 0, 0.5)',
     fontSize: 16
   },
   container: {
@@ -66,6 +85,7 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   pieChartTitle: {
+    marginTop: 10,
     textAlign: 'center',
     fontWeight: 'bold'
   }
