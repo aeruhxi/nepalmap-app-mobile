@@ -35,6 +35,22 @@ const PieChartCard = ({ mainValue, mainLabel, pieChartTitle }) => {
   );
 };
 
+const Population = () => (
+  <View>
+    <Text style={styles.title}>Population</Text>
+    <PieChartCard
+      mainLabel="People"
+      mainValue={'25,123,231'}
+      pieChartTitle={'Sex'}
+    />
+    <PieChartCard
+      mainLabel="Projected in 2031"
+      mainValue={'33,597,033'}
+      pieChartTitle={'Projected by sex in 2031'}
+    />
+  </View>
+);
+
 export default class Demographics extends Component {
   static navigationOptions = {
     title: 'Demographics',
@@ -50,17 +66,7 @@ export default class Demographics extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.title}>Population</Text>
-        <PieChartCard
-          mainLabel="People"
-          mainValue={'25,123,231'}
-          pieChartTitle={'Sex'}
-        />
-        <PieChartCard
-          mainLabel="Projected in 2031"
-          mainValue={'33,597,033'}
-          pieChartTitle={'Projected by sex in 2031'}
-        />
+        <Population />
       </ScrollView>
     );
   }
