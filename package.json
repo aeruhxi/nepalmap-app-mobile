@@ -26,6 +26,8 @@
   "dependencies": {
     "@expo/vector-icons": "^5.0.0",
     "art": "^0.10.1",
+    "d3": "^4.9.1",
+    "d3-scale": "^1.0.6",
     "d3-shape": "^1.2.0",
     "expo": "^16.0.0",
     "react": "16.0.0-alpha.6",

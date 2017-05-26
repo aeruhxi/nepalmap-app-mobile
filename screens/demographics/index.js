@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StatusBar, ScrollView, StyleSheet } from 'react-native';
 import Population from './Population';
+import Age from './Age';
 
 export default class Demographics extends Component {
   static navigationOptions = {
@@ -18,6 +19,7 @@ export default class Demographics extends Component {
     return (
       <ScrollView style={styles.container}>
         <Population />
+        <Age />
       </ScrollView>
     );
   }
