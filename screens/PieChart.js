@@ -3,7 +3,16 @@ import * as d3Shape from 'd3-shape';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Svg, { Path, G } from 'react-native-svg';
 
-const colors = ['rgba(224, 0, 21, 0.8)', 'rgba(0, 173, 239, 0.8)'];
+const colors = [
+  'rgb(224, 0, 21)',
+  'rgb(0, 173, 239)',
+  'rgb(98, 149, 204)',
+  'rgb(221, 133, 192)',
+  'rgb(142, 204, 35)',
+  'rgb(252, 205, 6)',
+  'rgb(219, 186, 151)',
+  'rgb(170, 170, 170)'
+];
 const padding = 20;
 
 /**
