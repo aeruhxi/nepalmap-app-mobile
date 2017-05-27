@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StatusBar, ScrollView, StyleSheet } from 'react-native';
 import Households from './Households';
-import ConstructionMaterail from './ConstructionMaterial';
+import ConstructionMaterial from './ConstructionMaterial';
 
 export default class Demographics extends Component {
   static navigationOptions = {
@@ -19,7 +19,7 @@ export default class Demographics extends Component {
     return (
       <ScrollView style={styles.container}>
         <Households />
-        <ConstructionMaterail />
+        <ConstructionMaterial />
       </ScrollView>
     );
   }
