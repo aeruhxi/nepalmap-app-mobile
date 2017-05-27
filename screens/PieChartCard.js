@@ -4,17 +4,18 @@ import { Card } from 'react-native-elements';
 import PieChart from './PieChart';
 
 const PieChartCard = ({ mainValue, mainLabel, pieChartTitle, data }) => {
+  const cardWidth = Dimensions.get('screen').width - 20;
   return (
     <Card
       containerStyle={{
-        width: Dimensions.get('screen').width - 20,
+        width: cardWidth,
         margin: 0
       }}
     >
       <Text style={styles.mainValue}>{mainValue}</Text>
       <Text style={styles.mainLabel}>{mainLabel}</Text>
       <Text style={styles.pieChartTitle}>{pieChartTitle}</Text>
-      <PieChart pieHeight={270} pieWidth={270} data={data} />
+      <PieChart pieHeight={270} pieWidth={cardWidth - 70} data={data} />
     </Card>
   );
 };

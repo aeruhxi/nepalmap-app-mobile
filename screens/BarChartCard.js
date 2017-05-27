@@ -10,17 +10,18 @@ const BarChartCard = ({
   barChartTitle,
   data
 }) => {
+  const cardWidth = Dimensions.get('screen').width - 20;
   return (
     <Card
       containerStyle={{
-        width: Dimensions.get('screen').width - 20,
+        width: cardWidth,
         margin: 0
       }}
     >
       {mainValue && <Text style={styles.mainValue}>{mainValue}</Text>}
       {mainLabel && <Text style={styles.mainLabel}>{mainLabel}</Text>}
       <Text style={styles.barChartTitle}>{barChartTitle}</Text>
-      <BarChart height={barChartHeight} width={350} data={data} />
+      <BarChart height={barChartHeight} width={cardWidth - 30} data={data} />
     </Card>
   );
 };

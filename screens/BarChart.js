@@ -11,7 +11,7 @@ export default class BarChart extends Component {
     const xScale = d3Scale
       .scaleLinear()
       .domain([0, d3.max(dataValues)])
-      .range([0, width - 35]);
+      .range([0, width - 40]);
 
     return (
       <Svg width={width} height={height}>
