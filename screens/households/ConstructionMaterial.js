@@ -12,6 +12,16 @@ const foundationData = [
   { label: 'Not Stated', value: 2 }
 ];
 
+const wallData = [
+  { label: 'Mud Bonded', value: 15 },
+  { label: 'Cement Bonded', value: 80 },
+  { label: 'Bamboo', value: 1 },
+  { label: 'Wood Planks', value: 1 },
+  { label: 'Others', value: 0 },
+  { label: 'Not Stated', value: 2 },
+  { label: 'Unbacked Brick', value: 0 }
+];
+
 export default class ConstructionMaterial extends Component {
   render() {
     return (
@@ -20,6 +30,10 @@ export default class ConstructionMaterial extends Component {
         <PieChartCard
           pieChartTitle={'Household by type of foundation'}
           data={foundationData}
+        />
+        <PieChartCard
+          pieChartTitle={'Household by type of wall'}
+          data={wallData}
         />
       </View>
     );
