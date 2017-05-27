@@ -145,11 +145,13 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   legendContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    flexWrap: 'wrap'
   },
   legend: {
     marginRight: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginBottom: 5
   },
   legendBox: {
     width: 20,
