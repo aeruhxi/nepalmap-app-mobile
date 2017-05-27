@@ -19,6 +19,7 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "lint": "eslint *js screens/**",
+    "format": "prettier --single-quote --write \"*.js\" \"screens/**/*.js\"",
     "test": "node node_modules/jest/bin/jest.js --watch"
   },
   "jest": {
