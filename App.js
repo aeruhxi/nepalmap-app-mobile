@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { DrawerNavigator, StackNavigator, DrawerItems } from 'react-navigation';
 import Demographics from './screens/demographics';
 import Education from './screens/Education';
+import HumanDevelopment from './screens/human-development';
 
 const CustomDrawerComponent = props => (
   <View>
@@ -24,6 +25,12 @@ const Root = DrawerNavigator(
     education: {
       screen: StackNavigator({
         route1: { screen: Education }
+      })
+    },
+
+    HumanDevelopment: {
+      screen: StackNavigator({
+        route1: { screen: HumanDevelopment }
       })
     }
   },
