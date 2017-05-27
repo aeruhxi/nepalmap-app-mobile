@@ -57,7 +57,7 @@ export default class PieChart extends Component {
     const { pieWidth, pieHeight, data } = this.props;
     const radius = Math.min(pieHeight, pieWidth) / 2 - padding;
 
-    const arcs = d3Shape.pie().value(item => item.value)(data);
+    const arcs = d3Shape.pie().sort(null).value(item => item.value)(data);
     let arc = d3Shape
       .arc()
       .outerRadius(radius)
