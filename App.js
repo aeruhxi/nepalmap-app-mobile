@@ -4,6 +4,7 @@ import { DrawerNavigator, StackNavigator, DrawerItems } from 'react-navigation';
 import Demographics from './screens/demographics';
 import Education from './screens/Education';
 import HumanDevelopment from './screens/human-development';
+import Households from './screens/households';
 
 const CustomDrawerComponent = props => (
   <View>
@@ -31,6 +32,12 @@ const Root = DrawerNavigator(
     HumanDevelopment: {
       screen: StackNavigator({
         route1: { screen: HumanDevelopment }
+      })
+    },
+
+    Households: {
+      screen: StackNavigator({
+        route1: { screen: Households }
       })
     }
   },
