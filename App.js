@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { DrawerNavigator, StackNavigator, DrawerItems } from 'react-navigation';
 import Demographics from './screens/demographics';
 import Education from './screens/Education';
 import HumanDevelopment from './screens/human-development';
 import Households from './screens/households';
+import { Icon } from 'react-native-elements';
 
 const CustomDrawerComponent = props => (
   <View>
@@ -15,30 +16,63 @@ const CustomDrawerComponent = props => (
   </View>
 );
 
+const defaultNavigationOptions = ({ navigation }) => ({
+  headerStyle: {
+    backgroundColor: 'red',
+    marginTop: StatusBar.currentHeight
+  },
+  headerTitleStyle: {
+    color: '#fff'
+  },
+  headerLeft: (
+    <Icon
+      name="menu"
+      style={{ marginLeft: 15 }}
+      color="white"
+      underlayColor="red"
+      onPress={() => navigation.navigate('DrawerOpen')}
+    />
+  )
+});
+
 const Root = DrawerNavigator(
   {
     Demographics: {
-      screen: StackNavigator({
-        route1: { screen: Demographics }
-      })
+      screen: StackNavigator(
+        {
+          route1: {
+            screen: Demographics
+          }
+        },
+        { navigationOptions: defaultNavigationOptions }
+      )
     },
 
-    education: {
-      screen: StackNavigator({
-        route1: { screen: Education }
-      })
+    Education: {
+      screen: StackNavigator(
+        {
+          route1: { screen: Education }
+        },
+        { navigationOptions: defaultNavigationOptions }
+      )
     },
 
     HumanDevelopment: {
-      screen: StackNavigator({
-        route1: { screen: HumanDevelopment }
-      })
+      screen: StackNavigator(
+        {
+          route1: { screen: HumanDevelopment }
+        },
+        { navigationOptions: defaultNavigationOptions }
+      )
     },
 
     Households: {
-      screen: StackNavigator({
-        route1: { screen: Households }
-      })
+      screen: StackNavigator(
+        {
+          route1: { screen: Households }
+        },
+        { navigationOptions: defaultNavigationOptions }
+      )
     }
   },
   {

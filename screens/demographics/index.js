@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
-import { StatusBar, ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import Population from './Population';
 import Age from './Age';
 
 export default class Demographics extends Component {
   static navigationOptions = {
-    title: 'Demographics',
-    headerStyle: {
-      backgroundColor: 'red',
-      marginTop: StatusBar.currentHeight
-    },
-    headerTitleStyle: {
-      color: '#fff'
-    }
+    title: 'Demographics'
   };
 
   render() {
