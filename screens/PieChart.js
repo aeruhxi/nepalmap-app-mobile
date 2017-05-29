@@ -62,7 +62,7 @@ export default class PieChart extends Component {
       .arc()
       .outerRadius(radius)
       .innerRadius(radius - 30)
-      .padAngle(0.05);
+      .padAngle(0.03);
 
     return arc(arcs[index]);
   };
