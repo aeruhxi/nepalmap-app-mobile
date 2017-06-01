@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
+
 import Population from './Population';
 import Age from './Age';
 

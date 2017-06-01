@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { DrawerNavigator, StackNavigator, DrawerItems } from 'react-navigation';
+
 import Demographics from './screens/demographics';
 import Education from './screens/Education';
 import HumanDevelopment from './screens/human-development';
 import Households from './screens/households';
-import { Icon } from 'react-native-elements';
+import Search from './screens/Search';
 
 const CustomDrawerComponent = props => (
   <View>
@@ -17,22 +18,7 @@ const CustomDrawerComponent = props => (
 );
 
 const defaultNavigationOptions = ({ navigation }) => ({
-  headerStyle: {
-    backgroundColor: 'red',
-    marginTop: StatusBar.currentHeight
-  },
-  headerTitleStyle: {
-    color: '#fff'
-  },
-  headerLeft: (
-    <Icon
-      name="menu"
-      style={{ marginLeft: 15 }}
-      color="white"
-      underlayColor="red"
-      onPress={() => navigation.navigate('DrawerOpen')}
-    />
-  )
+  header: <Search navigation={navigation} />
 });
 
 const Root = DrawerNavigator(
@@ -40,7 +26,7 @@ const Root = DrawerNavigator(
     Demographics: {
       screen: StackNavigator(
         {
-          route1: {
+          Demographics: {
             screen: Demographics
           }
         },
@@ -51,7 +37,7 @@ const Root = DrawerNavigator(
     Education: {
       screen: StackNavigator(
         {
-          route1: { screen: Education }
+          Education: { screen: Education }
         },
         { navigationOptions: defaultNavigationOptions }
       )
@@ -60,7 +46,7 @@ const Root = DrawerNavigator(
     HumanDevelopment: {
       screen: StackNavigator(
         {
-          route1: { screen: HumanDevelopment }
+          'Human Development': { screen: HumanDevelopment }
         },
         { navigationOptions: defaultNavigationOptions }
       )
@@ -69,7 +55,7 @@ const Root = DrawerNavigator(
     Households: {
       screen: StackNavigator(
         {
-          route1: { screen: Households }
+          Households: { screen: Households }
         },
         { navigationOptions: defaultNavigationOptions }
       )
