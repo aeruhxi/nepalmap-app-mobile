@@ -3,10 +3,6 @@ import { ScrollView, StyleSheet } from 'react-native';
 import Poverty from './Poverty';
 
 export default class Demographics extends Component {
-  static navigationOptions = {
-    title: 'Human Development'
-  };
-
   render() {
     return (
       <ScrollView style={styles.container}>

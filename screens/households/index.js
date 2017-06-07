@@ -4,10 +4,6 @@ import Households from './Households';
 import ConstructionMaterial from './ConstructionMaterial';
 
 export default class Demographics extends Component {
-  static navigationOptions = {
-    title: 'Households'
-  };
-
   render() {
     return (
       <ScrollView style={styles.container}>
