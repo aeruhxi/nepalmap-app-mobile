@@ -6,6 +6,7 @@ import Demographics from './screens/demographics';
 import Education from './screens/Education';
 import HumanDevelopment from './screens/human-development';
 import Households from './screens/households';
+import SearchBar from './screens/SearchBar';
 import Search from './screens/Search';
 
 const CustomDrawerComponent = props => (
@@ -18,51 +19,52 @@ const CustomDrawerComponent = props => (
 );
 
 const defaultNavigationOptions = ({ navigation }) => ({
-  header: <Search navigation={navigation} />
+  header: <SearchBar navigation={navigation} />
 });
 
-const Root = DrawerNavigator(
+const MainDrawerNavigator = DrawerNavigator(
   {
     Demographics: {
       screen: StackNavigator(
-        {
-          Demographics: {
-            screen: Demographics
-          }
-        },
+        { Demographics: { screen: Demographics } },
         { navigationOptions: defaultNavigationOptions }
       )
     },
 
     Education: {
       screen: StackNavigator(
-        {
-          Education: { screen: Education }
-        },
+        { Education: { screen: Education } },
         { navigationOptions: defaultNavigationOptions }
       )
     },
 
     HumanDevelopment: {
       screen: StackNavigator(
-        {
-          'Human Development': { screen: HumanDevelopment }
-        },
+        { 'Human Development': { screen: HumanDevelopment } },
         { navigationOptions: defaultNavigationOptions }
       )
     },
 
     Households: {
       screen: StackNavigator(
-        {
-          Households: { screen: Households }
-        },
+        { Households: { screen: Households } },
         { navigationOptions: defaultNavigationOptions }
       )
     }
   },
   {
-    contentComponent: CustomDrawerComponent
+    contentComponent: CustomDrawerComponent,
+    navigationOptions: defaultNavigationOptions
+  }
+);
+
+const Root = StackNavigator(
+  {
+    MainDrawerNavigator: { screen: MainDrawerNavigator },
+    Search: { screen: Search }
+  },
+  {
+    navigationOptions: { header: null }
   }
 );
 
