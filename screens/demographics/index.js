@@ -5,10 +5,6 @@ import Population from './Population';
 import Age from './Age';
 
 export default class Demographics extends Component {
-  static navigationOptions = {
-    title: 'Demographics'
-  };
-
   render() {
     return (
       <ScrollView style={styles.container}>
