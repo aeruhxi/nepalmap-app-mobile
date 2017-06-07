@@ -53,8 +53,7 @@ const MainDrawerNavigator = DrawerNavigator(
     }
   },
   {
-    contentComponent: CustomDrawerComponent,
-    navigationOptions: defaultNavigationOptions
+    contentComponent: CustomDrawerComponent
   }
 );
 
