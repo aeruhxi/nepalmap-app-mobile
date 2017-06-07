@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import { StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
+import _ from 'lodash';
 
-// TODO: use API to fetch data
-const dataset = [
-  ['Kathmandu', 'Municipality'],
-  ['Butwal', 'Municipality'],
-  ['Baglung', 'VDC'],
-  ['Siddharthanagar', 'Municipality'],
-  ['Pokhara', 'Municipality'],
-  ['Bardiya', 'District'],
-  ['Janakpur', 'District']
-];
+var dataset = require('../locationCodes.json');
 
 export default class Search extends Component {
   constructor(props) {
@@ -18,7 +10,7 @@ export default class Search extends Component {
     this.state = {
       searchResults: []
     };
-    this.handleChange = this.handleChange;
+    this.handleChange = _.debounce(this.handleChange.bind(this), 300);
   }
 
   componentDidMount() {
@@ -27,20 +19,24 @@ export default class Search extends Component {
 
   handleChange(searchString) {
     searchString = searchString.toLowerCase();
+
     if (searchString == '' || searchString.length < 2) {
       this.setState({ searchResults: [] });
     } else {
-      let searchResults = dataset.filter(data => {
-        if (data[0].toLowerCase().indexOf(searchString) != -1) {
-          return data;
+      let searchResults = [];
+      // data is defined because linter doesn't allow undefined variables
+      let data;
+      for (data in dataset) {
+        if (data.toLowerCase().indexOf(searchString) != -1) {
+          searchResults.push([data, dataset[data].type]);
         }
-      });
+      }
       this.setState({ searchResults });
     }
   }
 
   render() {
-    const { searchResults } = this.state;
+    const searchResults = this.state.searchResults.slice(0, 5);
     const renderResults = () => {
       return searchResults.map((result, index) => {
         return (
