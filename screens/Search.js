@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
-import _ from 'lodash';
+import { debounce } from 'lodash';
 
 var dataset = require('../locationCodes.json');
 
@@ -10,28 +10,27 @@ export default class Search extends Component {
     this.state = {
       searchResults: []
     };
-    this.handleChange = _.debounce(this.handleChange.bind(this), 300);
+    this.handleChange = debounce(this.handleChange, 300);
   }
 
-  componentDidMount() {
-    this.refs.search.focus();
-  }
-
-  handleChange(searchString) {
+  handleChange = searchString => {
     searchString = searchString.toLowerCase();
 
     if (searchString == '' || searchString.length < 2) {
       this.setState({ searchResults: [] });
     } else {
       let searchResults = [];
-      let data; // data is declared because linter doesn't allow undefined variables
-      for (data in dataset) {
+      for (let data in dataset) {
         if (data.toLowerCase().indexOf(searchString) != -1) {
           searchResults.push([data, dataset[data].type]);
         }
       }
       this.setState({ searchResults });
     }
+  };
+
+  componentDidMount() {
+    this.refs.search.focus();
   }
 
   render() {
