@@ -24,8 +24,7 @@ export default class Search extends Component {
       this.setState({ searchResults: [] });
     } else {
       let searchResults = [];
-      // data is defined because linter doesn't allow undefined variables
-      let data;
+      let data; // data is declared because linter doesn't allow undefined variables
       for (data in dataset) {
         if (data.toLowerCase().indexOf(searchString) != -1) {
           searchResults.push([data, dataset[data].type]);
