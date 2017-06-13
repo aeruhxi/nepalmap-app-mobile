@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
 import { debounce } from 'lodash';
+import { Icon } from 'react-native-elements';
 
 var dataset = require('../locationCodes.json');
 
@@ -47,15 +48,24 @@ export default class Search extends Component {
     };
     return (
       <View style={styles.container}>
-        <View style={styles.searchBar}>
-          <TextInput
-            ref="search"
-            style={styles.searchBox}
-            underlineColorAndroid="transparent"
-            placeholder="Search Eg: Kathmandu"
-            value={this.state.searchString}
-            onChangeText={string => this.handleChange(string)}
-          />
+        <View style={styles.navBar}>
+          <View style={styles.searchBar}>
+            <Icon
+              name="arrow-back"
+              color="gray"
+              underlayColor="white"
+              style={{ paddingLeft: 15, justifyContent: 'center' }}
+              onPress={() => this.props.navigation.goBack()}
+            />
+            <TextInput
+              ref="search"
+              style={styles.searchBox}
+              underlineColorAndroid="transparent"
+              placeholder="Search Eg: Kathmandu"
+              value={this.state.searchString}
+              onChangeText={string => this.handleChange(string)}
+            />
+          </View>
         </View>
         {renderResults()}
       </View>
@@ -67,24 +77,34 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  searchBar: {
-    height: 90,
-    paddingTop: StatusBar.currentHeight,
+  navBar: {
+    height: 70 + StatusBar.currentHeight,
     backgroundColor: 'red',
-    elevation: 4,
-    justifyContent: 'center'
-  },
-  searchBox: {
-    fontSize: 18,
+    justifyContent: 'flex-end',
     paddingLeft: 10,
+    paddingRight: 10,
+    elevation: 4
+  },
+  searchBar: {
     backgroundColor: 'white',
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 2,
     elevation: 4,
-    marginLeft: 10,
-    marginRight: 10,
-    height: 48
+    top: StatusBar.currentHeight + 10,
+    left: 10,
+    right: 10,
+    height: 48,
+    position: 'absolute'
+  },
+  searchBox: {
+    fontSize: 20,
+    paddingLeft: 20,
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 2,
+    flex: 1
   },
   searchResult: {
     backgroundColor: 'white',
