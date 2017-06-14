@@ -1,33 +1,21 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import PieChartCard from '../PieChartCard';
+import InfoCard from '../InfoCard';
 
-// TODO: Fetch data from server
-const peopleData = [
-  { label: 'Female', value: 51.5 },
-  { label: 'Male', value: 48.5 }
-];
-const peopleDataIn2031 = [
-  { label: 'Female', value: 51.4 },
-  { label: 'Male', value: 48.6 }
-];
+import { population } from './data';
 
 export default class Population extends Component {
   render() {
     return (
       <View>
         <Text style={styles.title}>{'Population'}</Text>
+        <InfoCard data={population.people} label="People" />
+        <PieChartCard pieChartTitle={'Sex'} data={population.sexRatio} />
+        <InfoCard data={population.projection} label="Projected in 2031" />
         <PieChartCard
-          mainLabel="People"
-          mainValue={'25,123,231'}
-          pieChartTitle={'Sex'}
-          data={peopleData}
-        />
-        <PieChartCard
-          mainLabel="Projected in 2031"
-          mainValue={'33,597,033'}
           pieChartTitle={'Projected by sex in 2031'}
-          data={peopleDataIn2031}
+          data={population.projectedSexRatio}
         />
       </View>
     );

@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import PieChartCard from '../PieChartCard';
+import InfoCard from '../InfoCard';
 import BarChartCard from '../BarChartCard';
 
-import { age } from './data';
+import { casteAndEthnicGroups } from './data';
 
-export default class Age extends Component {
+export default class CasteAndEthnicGroups extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{'Age'}</Text>
-        <PieChartCard
-          mainLabel="Median age"
-          mainValue={age.median}
-          pieChartTitle={'Popuation by age category'}
-          data={age.categoryDistribution}
+        <Text style={styles.title}>{'Caste and Ethnic Groups'}</Text>
+        <InfoCard
+          data={casteAndEthnicGroups.mostPopulous}
+          label="Most populous caste or ethnic group"
         />
         <BarChartCard
-          barChartTitle="Population by 10-year age range"
+          barChartTitle="Population by caste or ethnic group"
           barChartHeight={400}
-          data={age.groupDistribution}
+          data={casteAndEthnicGroups.distribution}
         />
       </View>
     );
