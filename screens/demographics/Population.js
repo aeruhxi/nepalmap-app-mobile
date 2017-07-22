@@ -1,38 +1,36 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import PieChartCard from '../PieChartCard';
+import { observer, inject } from 'mobx-react/native';
 
-// TODO: Fetch data from server
-const peopleData = [
-  { label: 'Female', value: 51.5 },
-  { label: 'Male', value: 48.5 }
-];
-const peopleDataIn2031 = [
-  { label: 'Female', value: 51.4 },
-  { label: 'Male', value: 48.6 }
-];
-
-export default class Population extends Component {
+@inject('appStore')
+@observer
+class Population extends Component {
   render() {
+    const { population } = this.props.appStore.demographics;
     return (
       <View>
-        <Text style={styles.title}>{'Population'}</Text>
+        <Text style={styles.title}>
+          {'Population'}
+        </Text>
         <PieChartCard
-          mainLabel="People"
-          mainValue={'25,123,231'}
+          mainLabel={population[0].name}
+          mainValue={population[0].value}
           pieChartTitle={'Sex'}
-          data={peopleData}
+          data={population[0].data}
         />
         <PieChartCard
-          mainLabel="Projected in 2031"
-          mainValue={'33,597,033'}
+          mainLabel={population[1].name}
+          mainValue={population[1].value}
           pieChartTitle={'Projected by sex in 2031'}
-          data={peopleDataIn2031}
+          data={population[1].data}
         />
       </View>
     );
   }
 }
+
+export default Population;
 
 const styles = StyleSheet.create({
   title: {
