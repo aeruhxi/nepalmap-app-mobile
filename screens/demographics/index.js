@@ -3,10 +3,6 @@ import { ScrollView, StyleSheet } from 'react-native';
 
 import Population from './Population';
 import Age from './Age';
-import LifeExpectancyAndIncome from './LifeExpectancyAndIncome';
-import Language from './Language';
-import CasteAndEthnicGroups from './CasteAndEthnicGroups';
-import Disabled from './Disabled';
 
 export default class Demographics extends Component {
   render() {
@@ -14,10 +10,6 @@ export default class Demographics extends Component {
       <ScrollView style={styles.container}>
         <Population />
         <Age />
-        <LifeExpectancyAndIncome />
-        <Language />
-        <CasteAndEthnicGroups />
-        <Disabled />
       </ScrollView>
     );
   }

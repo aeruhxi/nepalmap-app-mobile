@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
-import { StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
-import { debounce } from 'lodash';
+import {
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  TouchableHighlight
+} from 'react-native';
 import { Icon } from 'react-native-elements';
+import { debounce } from 'lodash';
+import { inject } from 'mobx-react';
 
-var dataset = require('../locationCodes.json');
+const dataset = require('../locationCodes.json');
 
+@inject('appStore')
 export default class Search extends Component {
   constructor(props) {
     super(props);
@@ -21,14 +30,39 @@ export default class Search extends Component {
       this.setState({ searchResults: [] });
     } else {
       let searchResults = [];
-      for (let data in dataset) {
-        if (data.toLowerCase().indexOf(searchString) != -1) {
-          searchResults.push([data, dataset[data].type]);
+      for (let data of Object.keys(dataset)) {
+        if (data.toLowerCase().includes(searchString)) {
+          searchResults.push([data, dataset[data].type, dataset[data].code]);
         }
       }
       this.setState({ searchResults });
     }
   };
+
+  handleItemTouch(result) {
+    const [location, type, code] = result;
+
+    let url = '';
+    switch (type) {
+      case 'VDC':
+        url = `http://nepalmap.org/profiles/${code}-${location.toLowerCase()}.json`;
+        break;
+
+      case 'District':
+        url = `http://nepalmap.org/profiles/${type.toLowerCase()}-${code}-${location.toLowerCase()}.json`;
+        break;
+
+      case 'Municipality':
+        url = `http://nepalmap.org/profiles/${code}-${location.toLowerCase()}-${type.toLowerCase()}.json`;
+        break;
+
+      default:
+        break;
+    }
+
+    this.props.appStore.updateApiData(url);
+    this.props.navigation.goBack();
+  }
 
   componentDidMount() {
     this.refs.search.focus();
@@ -39,10 +73,19 @@ export default class Search extends Component {
     const renderResults = () => {
       return searchResults.map((result, index) => {
         return (
-          <View key={index} style={styles.searchResult}>
-            <Text style={styles.searchResultLocation}>{result[0]}</Text>
-            <Text style={styles.searchResultType}>{result[1]}</Text>
-          </View>
+          <TouchableHighlight
+            key={index}
+            onPress={() => this.handleItemTouch(result)}
+          >
+            <View style={styles.searchResult}>
+              <Text style={styles.searchResultLocation}>
+                {result[0]}
+              </Text>
+              <Text style={styles.searchResultType}>
+                {result[1]}
+              </Text>
+            </View>
+          </TouchableHighlight>
         );
       });
     };

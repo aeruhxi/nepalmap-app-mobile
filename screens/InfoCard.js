@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, Dimensions, StyleSheet } from 'react-native';
 import { Card } from 'react-native-elements';
 
-const InfoCard = ({ data, label, info }) => {
+const InfoCard = ({ data, label, infoText }) => {
   const cardWidth = Dimensions.get('screen').width - 20;
   return (
     <Card
@@ -13,7 +13,7 @@ const InfoCard = ({ data, label, info }) => {
     >
       <Text style={styles.data}>{data}</Text>
       <Text style={styles.label}>{label}</Text>
-      <Text style={styles.info}>{info}</Text>
+      <Text style={styles.infoText}>{infoText}</Text>
     </Card>
   );
 };
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 20
   },
-  info: {
+  infoText: {
     marginTop: 15,
     fontSize: 16
   }

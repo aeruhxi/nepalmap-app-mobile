@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { DrawerNavigator, StackNavigator, DrawerItems } from 'react-navigation';
-
+import appStore from './stores/AppStore';
+import { Provider } from 'mobx-react/native';
 import Demographics from './screens/demographics';
 import Education from './screens/Education';
 import HumanDevelopment from './screens/human-development';
@@ -69,7 +70,11 @@ const Root = StackNavigator(
 
 export default class App extends React.Component {
   render() {
-    return <Root />;
+    return (
+      <Provider appStore={appStore}>
+        <Root />
+      </Provider>
+    );
   }
 }
 
