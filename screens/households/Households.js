@@ -6,7 +6,9 @@ export default class Households extends Component {
   render() {
     return (
       <View>
-        <Text style={styles.title}>{'Households'}</Text>
+        <Text style={styles.title}>
+          {'Households'}
+        </Text>
         <InfoCard
           data="435,544"
           label="Households"

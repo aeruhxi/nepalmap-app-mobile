@@ -36,7 +36,9 @@ const Legend = ({ index, item, selectedIndex, onPress }) => {
     <TouchableOpacity style={styles.legend} onPress={onPress}>
       <View style={styles.legend}>
         <View style={legendBoxStyle} />
-        <Text style={legendLabelStyle}>{item.label}</Text>
+        <Text style={legendLabelStyle}>
+          {item.label}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -73,7 +75,6 @@ export default class PieChart extends Component {
     return (
       <View style={styles.rootContainer}>
         <View style={styles.piechartContainer}>
-
           <View style={styles.textGroup}>
             <Text
               numberOfLines={2}
@@ -91,7 +92,7 @@ export default class PieChart extends Component {
 
           <Svg width={pieWidth} height={pieHeight}>
             <G x={pieWidth / 2} y={pieHeight / 2}>
-              {data.map((item, index) => (
+              {data.map((item, index) =>
                 <Path
                   key={'path_' + index}
                   d={this._createArc(index)}
@@ -102,14 +103,13 @@ export default class PieChart extends Component {
                     this.setState({ selectedIndex: index });
                   }}
                 />
-              ))}
+              )}
             </G>
           </Svg>
-
         </View>
 
         <View style={styles.legendContainer}>
-          {data.map((item, index) => (
+          {data.map((item, index) =>
             <Legend
               key={'legend_' + index}
               index={index}
@@ -117,7 +117,7 @@ export default class PieChart extends Component {
               item={item}
               onPress={() => this.setState({ selectedIndex: index })}
             />
-          ))}
+          )}
         </View>
       </View>
     );

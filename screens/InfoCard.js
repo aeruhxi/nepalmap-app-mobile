@@ -11,9 +11,15 @@ const InfoCard = ({ data, label, infoText }) => {
         margin: 0
       }}
     >
-      <Text style={styles.data}>{data}</Text>
-      <Text style={styles.label}>{label}</Text>
-      <Text style={styles.infoText}>{infoText}</Text>
+      <Text style={styles.data}>
+        {data}
+      </Text>
+      <Text style={styles.label}>
+        {label}
+      </Text>
+      <Text style={styles.infoText}>
+        {infoText}
+      </Text>
     </Card>
   );
 };

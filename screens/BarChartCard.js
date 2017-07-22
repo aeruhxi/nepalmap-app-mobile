@@ -18,9 +18,17 @@ const BarChartCard = ({
         margin: 0
       }}
     >
-      {mainValue && <Text style={styles.mainValue}>{mainValue}</Text>}
-      {mainLabel && <Text style={styles.mainLabel}>{mainLabel}</Text>}
-      <Text style={styles.barChartTitle}>{barChartTitle}</Text>
+      {mainValue &&
+        <Text style={styles.mainValue}>
+          {mainValue}
+        </Text>}
+      {mainLabel &&
+        <Text style={styles.mainLabel}>
+          {mainLabel}
+        </Text>}
+      <Text style={styles.barChartTitle}>
+        {barChartTitle}
+      </Text>
       <BarChart height={barChartHeight} width={cardWidth - 30} data={data} />
     </Card>
   );

@@ -12,7 +12,9 @@ export default class Poverty extends Component {
   render() {
     return (
       <View>
-        <Text style={styles.title}>{'Poverty Rate'}</Text>
+        <Text style={styles.title}>
+          {'Poverty Rate'}
+        </Text>
         <PieChartCard
           mainLabel="In Poverty"
           mainValue={'128,297'}

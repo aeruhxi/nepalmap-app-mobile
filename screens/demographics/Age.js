@@ -26,7 +26,9 @@ export default class Age extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{'Age'}</Text>
+        <Text style={styles.title}>
+          {'Age'}
+        </Text>
         <PieChartCard
           mainLabel="Median age"
           mainValue={'22'}

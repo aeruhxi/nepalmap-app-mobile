@@ -12,9 +12,15 @@ const PieChartCard = ({ mainValue, mainLabel, pieChartTitle, data }) => {
         margin: 0
       }}
     >
-      <Text style={styles.mainValue}>{mainValue}</Text>
-      <Text style={styles.mainLabel}>{mainLabel}</Text>
-      <Text style={styles.pieChartTitle}>{pieChartTitle}</Text>
+      <Text style={styles.mainValue}>
+        {mainValue}
+      </Text>
+      <Text style={styles.mainLabel}>
+        {mainLabel}
+      </Text>
+      <Text style={styles.pieChartTitle}>
+        {pieChartTitle}
+      </Text>
       <PieChart pieHeight={270} pieWidth={cardWidth - 70} data={data} />
     </Card>
   );

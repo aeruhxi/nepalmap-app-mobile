@@ -26,7 +26,9 @@ export default class ConstructionMaterial extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{'Household Construction Material'}</Text>
+        <Text style={styles.title}>
+          {'Household Construction Material'}
+        </Text>
         <PieChartCard
           pieChartTitle={'Household by type of foundation'}
           data={foundationData}

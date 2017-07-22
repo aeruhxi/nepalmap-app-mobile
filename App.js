@@ -10,14 +10,13 @@ import Households from './screens/households';
 import SearchBar from './screens/SearchBar';
 import Search from './screens/Search';
 
-const CustomDrawerComponent = props => (
+const CustomDrawerComponent = props =>
   <View>
     <View style={styles.logoContainer}>
       <Text style={styles.logoText}>Nepal Map</Text>
     </View>
     <DrawerItems {...props} />
-  </View>
-);
+  </View>;
 
 const defaultNavigationOptions = ({ navigation }) => ({
   header: <SearchBar navigation={navigation} />
